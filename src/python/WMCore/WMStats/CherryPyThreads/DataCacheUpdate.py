@@ -5,10 +5,10 @@ from WMCore.REST.CherryPyPeriodicTask import CherryPyPeriodicTask
 from WMCore.WMStats.DataStructs.DataCache import DataCache
 from WMCore.Services.WMStats.WMStatsReader import WMStatsReader
 from WMCore.ReqMgr.DataStructs.RequestStatus import WMSTATS_JOB_INFO, WMSTATS_NO_JOB_INFO
-
+from memory_profiler import profile
 
 class DataCacheUpdate(CherryPyPeriodicTask):
-
+    @profile
     def __init__(self, rest, config):
         self.getJobInfo = getattr(config, "getJobInfo", False)
 
