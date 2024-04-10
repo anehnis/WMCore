@@ -8,7 +8,7 @@ from WMCore.ReqMgr.DataStructs.RequestStatus import WMSTATS_JOB_INFO, WMSTATS_NO
 from memory_profiler import profile
 
 class DataCacheUpdate(CherryPyPeriodicTask):
-    @profile
+    
     def __init__(self, rest, config):
         self.getJobInfo = getattr(config, "getJobInfo", False)
 
@@ -20,7 +20,7 @@ class DataCacheUpdate(CherryPyPeriodicTask):
         """
         self.concurrentTasks = [{'func': self.gatherActiveDataStats,
                                  'duration': config.dataCacheUpdateDuration}]
-
+    @profile
     def gatherActiveDataStats(self, config):
         """
         gather active data statistics
